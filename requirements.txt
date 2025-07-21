@@ -1,0 +1,9 @@
+langchain 
+langchain-groq 
+chromadb 
+langchain-chroma
+langchain-community
+sentence-transformers
+psycopg2
+sqlalchemy 
+pytest

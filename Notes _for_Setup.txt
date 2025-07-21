@@ -1,0 +1,94 @@
+We have to first install SQLite
+
+
+sudo apt update
+sudo apt install sqlite3
+
+sqlite3 --version
+
+
+Then download Adventure works
+like so :
+
+
+    git clone https://github.com/nuitsjp/AdventureWorks-for-SQLite.git
+    cd AdventureWorks-for-SQLite
+
+
+then 
+    
+    sqlite3 AdventureWorksLT.db
+
+
+To Test 
+    SELECT name FROM sqlite_master WHERE type='table';
+
+Post that 
+
+    import sqlite3
+
+    # Connect to the database
+    conn = sqlite3.connect("AdventureWorks2014.db")
+    cursor = conn.cursor()
+
+    # Query example
+    cursor.execute("SELECT name FROM sqlite_master WHERE type='table'")
+    tables = cursor.fetchall()
+
+    print("Tables in AdventureWorks:")
+    for t in tables:
+        print(t[0])
+
+    # Close connection
+    conn.close()
+
+
+Finally this SQL is not working with seeding data   ... so I am going to try PostGreSQL
+Here are the steps:
+
+
+    sudo apt update
+
+    sudo apt install postgresql postgresql-contrib
+
+Start and enable the PostgreSQL service:
+    chmod 775 /var/run/postgresql
+    sudo systemctl start postgresql   --> service postgresql start
+    sudo systemctl enable postgresql  --> did not work as you need root password
+    What needs to be done is go into the root like :
+        sudo -i
+        then run 
+            sudo -u postgres psql
+            \q    -->  To quit
+Check the status:
+
+    sudo systemctl status postgresql   -->  service postgresql status
+
+To setup the DB :
+    wget https://ftp.postgresql.org/pub/projects/pgFoundry/dbsamples/pagila/pagila/pagila-0.10.1.zip
+    unzip pagila-0.10.1.zip
+
+now 
+
+    at the the postgresql prompt run
+    \i /full/path/to/your/file.sql
+    
+    These are the files I ran
+        pagila-schema.sql pagila-insert-data.sql pagila-data.sql
+
+    to the the list of table 
+        \dbt 
+    Also you can run a select Query
+    at the end of the results you will get a colon :   
+    just press q   (like in VI)
+
+THE password has been changed to :    you know ...
+
+
+Here is how you work with the postgresql 
+\l ->  To list the databases
+\c your_database   -> to connect to a database
+\dt    -->  To list all the tables in the database your have connected to
+\dt *.*   -->  to list all the tables accross schemas
+ 
+

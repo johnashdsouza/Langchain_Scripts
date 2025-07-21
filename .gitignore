@@ -1,0 +1,7 @@
+.venv/
+__pycache__/
+chroma_db/
+pagila-0.10.1.zip
+pagila-0.10.1/
+AdventureWorks2014.db
+AdventureWorks-for-SQLite/
