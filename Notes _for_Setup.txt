@@ -58,7 +58,7 @@ Start and enable the PostgreSQL service:
     What needs to be done is go into the root like :
         sudo -i
         then run 
-            sudo -u postgres psql
+           sudo -u postgres psql 
             \q    -->  To quit
 Check the status:
 
