@@ -7,3 +7,8 @@ sentence-transformers
 psycopg2
 sqlalchemy 
 pytest
+smolagents
+smolagents[toolkit]
+smolagents[transformers]
+smolagents[groq]
+huggingface_hub

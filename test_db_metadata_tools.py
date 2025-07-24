@@ -34,13 +34,12 @@ def test_list_schemas(engine):
     assert isinstance(schemas, list)
     assert "public" in schemas
 
-def test_list_tables(engine):
-    tables = list_tables(engine, "public")
+def test_list_tables():
+    tables = list_tables("public")
     assert isinstance(tables, list)
 
-def test_get_table_metadata(engine):
-    tables = list_tables(engine, "public")
-    if tables:
-        metadata = get_table_metadata(engine, tables[0], schema="public")
-        assert "columns" in metadata
-        assert isinstance(metadata["columns"], list)
+def test_get_table_metadata():
+
+    metadata = get_table_metadata('actor', schema="public")
+    assert "columns" in metadata
+    assert isinstance(metadata["columns"], list)
