@@ -1,6 +1,11 @@
 from smolagents import WebSearchTool,CodeAgent, InferenceClientModel
 import os
 
+from db_metadata_tools import (
+    get_engine, list_databases, list_schemas,
+    list_tables, get_table_metadata
+)
+
 search_tool = WebSearchTool()
 print(search_tool("Who's the current president of Russia?"))
 
@@ -42,10 +47,14 @@ model1 = InferenceClientModel(
 )
 
 agent = CodeAgent(tools=[model_download_tool], model=model)
-
+agent_db =  CodeAgent(tools=[get_table_metadata,list_tables], model=model)
 
 '''
 agent.run(
     "Can you give me the name of the model that has the most downloads in the 'text-to-video' task on the Hugging Face Hub?"
 )
 '''
+
+agent_db.run(
+    "how many actors do I have enlisted ?"
+)

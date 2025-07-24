@@ -59,15 +59,15 @@ def list_tables(schema: str = 'public') -> List[str]:
     inspector = inspect(engine)
     return inspector.get_table_names(schema=schema)
 
+@tool
 def get_table_metadata(table_name: str, schema: str = 'public') -> Dict[str, Union[List[Dict[str, Union[str, bool]]], List[str]]]:
      """
     This tool will get the technical metadata of a table in the database
 
-    Columns:
-        table_name
-
     Args:
-        metadata: The metadata of a column in json structure
+        table_name:  Name of the table for which the metadata needs to be obtained
+        schema :  The Name of the database schema in which the table resides.  This field is optional.  If the schema is not specified the function will refer the 'public' schema
+
     """
      TEST_DB_CONFIG = {
         "user": "postgres",
